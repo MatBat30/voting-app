@@ -66,24 +66,3 @@ jobs:
         run: |
           docker build -t your_docker_image_name .
           docker push your_docker_image_name
-
-  semantic_release:
-    runs-on: ubuntu-latest
-
-    needs: docker_push
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Install Semantic Release
-        run: npm install -g semantic-release
-
-      - name: Run Semantic Release
-        run: semantic-release
-
