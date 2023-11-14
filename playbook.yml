@@ -1,0 +1,17 @@
+- name: Provision Python
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Boostrap python
+      raw: test -e /usr/bin/python3 || (apt-get -y update && apt-get install -y python3 python3-pip python3-apt)
+- name: "Copy content of directory 'files'"
+  copy:
+    src: azure-vote/
+    dest: /app
+- name: "install dependencies requirements"
+  pip:
+    name:
+      - Flask
+      - redis
+      - requests
+    state: present

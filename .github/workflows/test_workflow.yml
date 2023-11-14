@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   workflow_dispatch: # Manually trigger workflow
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
 
 jobs:
   lint_code:
